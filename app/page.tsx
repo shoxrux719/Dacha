@@ -14,21 +14,19 @@ import ScrollToTop from "@/components/ScrollToTop"
 
 
 export default async function Home() {
-   const res = await fetch('http://localhost:3000/api/sections', { cache: 'no-store' })
-  const sections = await res.json()
+ 
 
-  const hero = sections.find((s: any) => s.slug === 'hero')
-  const about = sections.find((s: any) => s.slug === 'about')
-  const gallery = sections.find((s: any) => s.slug === 'gallery')
+
+
   return (
       <EntryScene>
     <main className="min-h-screen">
       <Header />
 
       {/* пример использования данных */}
-       <HeroSection title={hero?.title} text={hero?.text} />
+       <HeroSection  />
     
-      <AboutSection title={about?.title} text={about?.text} />
+      <AboutSection />
       <GallerySection />
       <AmenitiesSection />
       <WhyChooseUsSection />
