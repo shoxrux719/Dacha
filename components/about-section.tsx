@@ -5,11 +5,8 @@ import { useInView } from "framer-motion"
 import { useRef } from "react"
 import { Users, Maximize, Bed } from "lucide-react"
 import { useLanguage } from "@/contexts/language-context"
-type  AboutSectionProps = {
-  title?: string
-  text?: string
-}
-export function AboutSection({ title, text }: AboutSectionProps) {
+
+export function AboutSection() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: "-100px" })
   const { t } = useLanguage()
@@ -58,7 +55,7 @@ export function AboutSection({ title, text }: AboutSectionProps) {
             <p className="text-muted-foreground leading-relaxed mb-10">{t("about.description2")}</p>
 
             {/* Highlights */}
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
               {highlights.map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -69,11 +66,14 @@ export function AboutSection({ title, text }: AboutSectionProps) {
                 >
                   <item.icon className="w-6 h-6 mx-auto mb-3 text-primary" />
                   <p className="text-2xl font-semibold mb-1">{item.value}</p>
-                  <p className="text-sm text-muted-foreground uppercase tracking-wide">{item.label}</p>
+                  <p className="text-sm text-muted-foreground uppercase tracking-wide">
+                    {item.label}
+                  </p>
                 </motion.div>
               ))}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
